@@ -2,7 +2,7 @@
 /**
  *  Modela una fecha
  *  
- *  @author - 
+ *  @author - Elorri Oloritz
  */
 public class Fecha
 {
@@ -74,8 +74,8 @@ public class Fecha
      * Devuelve una copia exacta al objeto actual
      */
     public Fecha obtenerCopia() {
-         return null;
-
+        Fecha copia = new Fecha(dia,mes,año);
+        return copia;
     }
 
     /**
