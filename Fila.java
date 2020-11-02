@@ -1,4 +1,3 @@
-
 /**
  *  Representa a una fila de la hoja de cálculo
  *  Toda fila tiene un identificador y en ella
@@ -19,12 +18,10 @@ public class Fila
      * Constructor 1 
      */
     public Fila(String id)    {
-         this.id = id;
-         ingresos = 0;
-         gastos = 0;
-         fecha.setAño(2000);
-         fecha.setMes(1);
-         fecha.setDia(1);
+        this.id = id;
+        ingresos = 0;
+        gastos = 0;
+        fecha = new Fecha(1,1,2000);
     }
 
     /**
@@ -35,10 +32,8 @@ public class Fila
         this.fecha = fecha;
         this.ingresos = ingresos;
         this.gastos = gastos;
-        
 
     }
-    
     /**
      * accesor para el id de la fila
      */
@@ -46,7 +41,6 @@ public class Fila
         return this.id;
 
     }
-
 
     /**
      * accesor para la fecha
@@ -79,15 +73,15 @@ public class Fila
         return this.ingresos - this.gastos;
 
     }
-    
+
     /**
      * obtiene una copia idéntica a la fila actual.
      * La fecha que incluye la fila duplicada también es una copia
      * 
      */
     public Fila duplicar() {
-       Fila duplicar = new Fila(id,fecha,ingresos,gastos);
-       return duplicar;
+        Fila duplicar = new Fila(id,fecha,ingresos,gastos);
+        return duplicar;
 
     }
 
@@ -96,12 +90,17 @@ public class Fila
      * (leer enunciado)
      */
     public String toString() {
-        String formato = "";
-        formato = String.format("%8s, %15d, %15.2d€, %15.2d€, %15.2d€",
-        "Fila1", fecha, ingresos, gastos, getBeneficio());
-        return formato;
+        String negativo;
+
+        if (getBeneficio() < 0){
+            negativo = "**";
+        }
+        else{
+            negativo = "";
+        }
+        return String.format("%8s %15s %15.2f€ %15.2f€ %15.2f€ %2s\n",
+            id, fecha, ingresos, gastos, getBeneficio(), negativo);
     }
 
-     
 
 }
